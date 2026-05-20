@@ -376,8 +376,9 @@
 
     .travel-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr 0.95fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 14px;
+      align-items: stretch;
     }
 
     .map-link,
@@ -496,7 +497,7 @@
           </a>
 
           <div class="title-wrap">
-            <p class="eyebrow">Deutsche Meisterschaft Mannschaftsturnier · 26.06.2026</p>
+            <p class="eyebrow">Deutsche Meisterschaft Mannschaftsturnier · 27. - 28.06.2026</p>
             <h1>Senioren Team-Wettbewerb in Koblenz</h1>
             <p class="subtitle">
               Ein kompakter Überblick zum Deutschen Meisterschaft Mannschaftsturnier in Koblenz mit allen wichtigen Infos zu Damen- und Herren-Teams, Disziplinen, Anreise, Ausschreibung und Sponsoren.
@@ -527,7 +528,7 @@
                 </div>
                 <div class="fact">
                   <strong>Datum</strong>
-                  <span>Freitag, 26.06.2026</span>
+                  <span>27. - 28.06.2026</span>
                 </div>
                 <div class="fact">
                   <strong>Format</strong>
@@ -536,6 +537,31 @@
                 <div class="fact">
                   <strong>Waffen</strong>
                   <span>Florett · Degen · Säbel</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="team-grid">
+              <div class="panel" style="flex: 2;">
+                <strong style="font-size:1.05rem;">Waffenkontrolle (alle Waffen)</strong>
+                <div class="schedule-grid" style="display: flex; flex-direction: column; gap: 10px;">
+                  <div class="schedule-item">
+                    <strong>Fr, 26.06.</strong>
+                    <span>16:00 - 19:00 Uhr</span>
+                  </div>
+                  <div class="schedule-item">
+                    <strong>Sa, 27.06.</strong>
+                    <span>06:30 - 09:00 Uhr</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel" style="flex: 1;">
+                <strong style="font-size:1.05rem;">Ausschreibungen</strong>
+                <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                  <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32809/html" target="_blank" rel="noopener noreferrer">Ausschreibung Florett</a>
+                  <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32808/html" target="_blank" rel="noopener noreferrer">Ausschreibung Degen</a>
+                  <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32785/html" target="_blank" rel="noopener noreferrer">Ausschreibung Säbel</a>
                 </div>
               </div>
             </div>
@@ -553,15 +579,15 @@
                 <div class="schedule-grid">
                   <div class="schedule-item">
                     <strong>Florett</strong>
-                    <span>26.06.2026<br />09:00 Uhr</span>
+                    <span>28.06.2026<br />Beginn: 11:15 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Degen</strong>
-                    <span>26.06.2026<br />11:00 Uhr</span>
+                    <span>27.06.2026<br />Beginn: 09:00 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Säbel</strong>
-                    <span>26.06.2026<br />13:00 Uhr</span>
+                    <span>28.06.2026<br />Beginn: 11:15 Uhr</span>
                   </div>
                 </div>
               </div>
@@ -578,21 +604,21 @@
                 <div class="schedule-grid">
                   <div class="schedule-item">
                     <strong>Florett</strong>
-                    <span>26.06.2026<br />10:00 Uhr</span>
+                    <span>27.06.2026<br />Beginn: 09:00 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Degen</strong>
-                    <span>26.06.2026<br />12:00 Uhr</span>
+                    <span>28.06.2026<br />Beginn: 08:00 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Säbel</strong>
-                    <span>26.06.2026<br />14:00 Uhr</span>
+                    <span>27.06.2026<br />Beginn: 12:30 Uhr</span>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="travel-grid">
+            <div class="travel-grid" style="grid-template-columns: repeat(3, 1fr); align-items: stretch;">
               <div class="panel travel">
                 <strong>Wettkampfstätte</strong>
                 <p style="margin:8px 0 0;">Jupp-Gauchel-Straße 10, 56075 Koblenz</p>
@@ -609,9 +635,22 @@
               </div>
 
               <div class="panel travel">
-                <strong>Ausschreibung</strong>
-                <p style="margin:8px 0 0;">Hier kann die offizielle Ausschreibung als PDF eingebunden werden.</p>
-                <a class="download-btn" href="#">PDF herunterladen</a>
+                <strong>Unterkünfte</strong>
+                <ul style="padding-left: 18px; margin: 10px 0 0;">
+                  <li>CONTEL Hotel Koblenz<br /><small>Pastor-Klein-Straße 19, 56073 Koblenz</small></li>
+                  <li style="margin-top:8px;">Hotel Sander<br /><small>Casinostraße 17, 56068 Koblenz</small></li>
+                  <li style="margin-top:8px;">Four Points Flex by Sheraton Koblenz<br /><small>Neversstraße 15, 56068 Koblenz</small></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="panel">
+              <strong style="font-size:1.05rem;">Kontakt</strong>
+              <div class="facts">
+                <div class="fact">
+                  <strong>Ansprechpartner</strong>
+                  <span>Jörg Schwanninger<br /><a href="mailto:sportwart@fechten-mittelrhein.de">sportwart@fechten-mittelrhein.de</a></span>
+                </div>
               </div>
             </div>
           </div>
