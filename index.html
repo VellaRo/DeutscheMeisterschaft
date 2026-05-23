@@ -596,6 +596,18 @@
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
+      /* Mobile fixes to avoid unwanted cropping: allow overflow where necessary and scale images to available width. */
+      body { overflow-x: auto; }
+      .host-logo-link,
+      .sponsor-strip a,
+      .panel,
+      .gallery-card { overflow: visible; }
+      .sponsor-strip img { max-height: 48px; height: auto; }
+      .host-logo-link { padding: 8px; min-height: auto; }
+      /* Make gallery items stack full width on small screens to avoid cropping */
+      .gallery-grid { grid-template-columns: 1fr; grid-auto-rows: auto; }
+      .gallery-card { height: auto; }
+      .gallery-link img { width: 100%; height: auto; object-fit: contain; }
       /* Travel panels: behavior is decided via JS at runtime.
          - If enough horizontal space for panels at `--travel-min-width`, they will layout inline and allow horizontal scroll.
          - If not enough space, they will stack vertically (one per row).
