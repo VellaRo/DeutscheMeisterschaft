@@ -477,6 +477,7 @@
       .hero-card { padding: 14px; border-radius: 22px; }
       .host-logo-link { min-height: 82px; }
       .sponsor-strip { grid-template-columns: repeat(2, 1fr); }
+      .sponsor-strip.bottom { display: none; }
       .facts,
       .schedule-grid,
       .gallery-grid {
@@ -492,9 +493,14 @@
     <div class="container">
       <div class="hero-card">
         <div class="topline">
-          <a class="host-logo-link" href="https://www.fechten.org/" target="_blank" rel="noopener noreferrer" aria-label="Deutscher Fechter-Bund">
-            <img src="logo-dfb.svg" alt="Logo Deutscher Fechter-Bund" />
-          </a>
+          <div class="host-logos" style="display:flex; flex-direction:column; gap:8px;">
+            <a class="host-logo-link ctg" href="https://www.ctg-koblenz.de/sportangebote/kampfsport/fechten/" target="_blank" rel="noopener noreferrer" aria-label="Coblenzer Turngesellschaft 1880 e.V.">
+              <img src="cropped-Logo.png" alt="Logo Coblenzer Turngesellschaft 1880 e.V." />
+            </a>
+            <a class="host-logo-link" href="https://www.fechten.org/" target="_blank" rel="noopener noreferrer" aria-label="Deutscher Fechter-Bund">
+              <img src="logo-dfb.svg" alt="Logo Deutscher Fechter-Bund" />
+            </a>
+          </div>
 
           <div class="title-wrap">
             <a href="#" target="_blank" rel="noopener noreferrer"><img src="Logo DMT 2026 Mai1.svg" alt="LOGO DMT 2026" /></a>
@@ -506,14 +512,11 @@
             </p>
 
           </div>
-          <a class="host-logo-link ctg" href="https://www.ctg-koblenz.de/sportangebote/kampfsport/fechten/" target="_blank" rel="noopener noreferrer" aria-label="Coblenzer Turngesellschaft 1880 e.V.">
-            <img src="cropped-Logo.png" alt="Logo Coblenzer Turngesellschaft 1880 e.V." />
-          </a>
 
         </div>
 
         <div class="overview">
-          <div class="sponsor-strip">
+          <div class="sponsor-strip top">
           <!-- <a href="https://www.bundeswehr.de/" target="_blank" rel="noopener noreferrer"><img src="bundesweht.png" alt="Logo Bundeswehr" /></a> -->
 
           <a href="https://www.heuser-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Zeichenfläche 121--Logov5.svg" alt="Heuser Heizung Lüftung" /></a>
@@ -592,12 +595,12 @@
 
                 <div class="schedule-grid">
                   <div class="schedule-item">
-                    <strong>Florett</strong>
-                    <span>28.06.2026<br />Beginn: 11:15 Uhr</span>
-                  </div>
-                  <div class="schedule-item">
                     <strong>Degen</strong>
                     <span>27.06.2026<br />Beginn: 09:00 Uhr</span>
+                  </div>
+                  <div class="schedule-item">
+                    <strong>Florett</strong>
+                    <span>28.06.2026<br />Beginn: 11:15 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Säbel</strong>
@@ -621,12 +624,12 @@
                     <span>27.06.2026<br />Beginn: 09:00 Uhr</span>
                   </div>
                   <div class="schedule-item">
-                    <strong>Degen</strong>
-                    <span>28.06.2026<br />Beginn: 08:00 Uhr</span>
-                  </div>
-                  <div class="schedule-item">
                     <strong>Säbel</strong>
                     <span>27.06.2026<br />Beginn: 12:30 Uhr</span>
+                  </div>
+                  <div class="schedule-item">
+                    <strong>Degen</strong>
+                    <span>28.06.2026<br />Beginn: 08:00 Uhr</span>
                   </div>
                 </div>
               </div>
@@ -669,7 +672,7 @@
             </div>
           </div>
 
-          <div class="sponsor-strip">
+          <div class="sponsor-strip bottom">
             <a href="https://sebamed.com/en/info/" target="_blank" rel="noopener noreferrer"><img src="sebamed.png" alt="Logo Sebamed" /></a>
             <a href="https://fechtklingen.de/?srsltid=AfmBOoqB4DIWc3NGaSao5z3sqwPX9OG5Vv2ohKFRjF_To7LH5a7HXEjX" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/fechtklingen.svg" alt="Logo Fechtklingen.de" /></a>
             <a href="https://www.koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Koblenz-verbindet-Logo.webp" alt="Koblenz Verbindet" /></a>
