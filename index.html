@@ -21,7 +21,7 @@
       --shadow: 0 22px 55px rgba(0,0,0,0.28);
       --glow: 0 0 0 1px rgba(156,193,255,0.18), 0 12px 34px rgba(52,110,196,0.16);
       --radius: 22px;
-      --max: 1320px;
+      --max: 1600px;
     }
 
     * { box-sizing: border-box; }
@@ -76,6 +76,7 @@
       margin: 0 auto;
       position: relative;
       z-index: 1;
+      padding: 0 12px;
     }
 
     .hero {
@@ -926,17 +927,38 @@
       if (!grid) return;
       const panels = Array.from(grid.querySelectorAll('.panel'));
       const gap = parseInt(getComputedStyle(grid).gap) || 14;
-      const minWidth = 320; // matches CSS min-width for panels
+      const minWidth = 220; // allow panels to be narrower so they can fit side-by-side in tighter layouts
 
       function updateTravel(){
-        const containerWidth = grid.clientWidth;
+        // measure available width inside the grid (exclude horizontal padding)
+        const style = getComputedStyle(grid);
+        const paddingLeft = parseFloat(style.paddingLeft) || 0;
+        const paddingRight = parseFloat(style.paddingRight) || 0;
+        const containerWidth = grid.clientWidth - paddingLeft - paddingRight;
+
+        // compute required width to fit panels at their minimum width
         const required = panels.length * minWidth + (panels.length - 1) * gap;
+
         if (containerWidth >= required) {
+          // horizontal layout: size each panel so they fit exactly and avoid horizontal scrolling
           grid.classList.add('travel-inline');
           grid.classList.remove('travel-stack');
+          const availableForItems = containerWidth - (panels.length - 1) * gap;
+          const itemWidth = Math.floor(availableForItems / panels.length);
+          panels.forEach(p => {
+            p.style.flex = `0 0 ${itemWidth}px`;
+            p.style.width = `${itemWidth}px`;
+            p.style.margin = '0';
+          });
         } else {
+          // stacked layout: clear inline sizing and center panels with fixed min width
           grid.classList.add('travel-stack');
           grid.classList.remove('travel-inline');
+          panels.forEach(p => {
+            p.style.flex = '';
+            p.style.width = '';
+            p.style.margin = '';
+          });
         }
       }
 
