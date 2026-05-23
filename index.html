@@ -593,8 +593,8 @@
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
-      /* Mobile fixes to avoid unwanted cropping: allow overflow where necessary and scale images to available width. */
-      body { overflow-x: auto; }
+      /* Mobile fixes to avoid unwanted cropping: keep horizontal overflow hidden and make elements responsive */
+      body { overflow-x: hidden; }
       .host-logo-link,
       .sponsor-strip a,
       .panel,
@@ -760,7 +760,7 @@
               </div>
             </div>
 
-            <div class="travel-grid" style="grid-template-columns: repeat(3, 1fr); align-items: stretch;">
+            <div class="travel-grid">
               <div class="panel travel">
                 <strong>Wettkampfstätte</strong>
                 <p style="margin:8px 0 0;">Jupp-Gauchel-Straße 10, 56075 Koblenz</p>
