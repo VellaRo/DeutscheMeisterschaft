@@ -72,7 +72,10 @@
     img { max-width: 100%; display: block; }
 
     .container {
-      width: min(calc(100% - 24px), var(--max));
+      /* Use the full viewport width dynamically instead of constraining to a fixed max (A4-like) */
+      width: calc(100% - 32px);
+      max-width: none;
+      padding: 0 16px;
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -145,6 +148,9 @@
       box-shadow: 0 12px 26px rgba(0,0,0,0.16);
     }
 
+    /* allow host logos to render without being clipped */
+    .host-logo-link { overflow: visible; }
+
     .host-logo-link:hover,
     .sponsor-strip a:hover,
     .panel:hover,
@@ -163,7 +169,7 @@
     }
 
     .host-logo-link img {
-      max-height: 72px;
+      max-height: 82px;
       width: auto;
       object-fit: contain;
       position: relative;
@@ -381,6 +387,34 @@
       align-items: stretch;
     }
 
+    /* Dynamic travel layout helpers: JS will toggle `.travel-inline` or `.travel-stack`.
+       - `.travel-inline`: panels laid out horizontally; allows horizontal scroll when needed.
+       - `.travel-stack`: panels stacked vertically (one per row).
+    */
+    .travel-grid.travel-inline {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      gap: 14px;
+    }
+    .travel-grid.travel-inline .panel {
+      min-width: 320px;
+      flex: 0 0 auto;
+    }
+    .travel-grid.travel-stack {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      overflow: visible;
+    }
+    .travel-grid.travel-stack .panel {
+      /* Keep the fixed minimum width for each panel when stacked and center them.
+         If the viewport becomes narrower than this width the page will allow horizontal overflow. */
+      min-width: 320px;
+      width: 320px;
+      margin: 0 auto;
+    }
+
     .map-link,
     .download-btn {
       display: inline-flex;
@@ -561,9 +595,11 @@
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
-      /* Travel panels on very small screens: stack but keep a sensible min-width so content doesn't get squashed. If viewport becomes narrower than the min-width, allow horizontal scrolling. */
-      .travel-grid { grid-template-columns: 1fr; overflow-x: auto; gap: 12px; }
-      .travel-grid .panel { min-width: 320px; box-sizing: border-box; }
+      /* Travel panels: behavior is decided via JS at runtime.
+         - If enough horizontal space for panels at `--travel-min-width`, they will layout inline and allow horizontal scroll.
+         - If not enough space, they will stack vertically (one per row).
+      */
+      .travel-grid .panel { box-sizing: border-box; }
       h1 { font-size: clamp(1.5rem, 8vw, 2.4rem); }
     }
   </style>
@@ -580,7 +616,7 @@
           <div class="title-wrap">
             <a href="#" target="_blank" rel="noopener noreferrer"><img src="Logo DMT 2026 Mai1.svg" alt="LOGO DMT 2026" /></a>
 
-            <p class="eyebrow">Deutsche Meisterschaft Mannschaftsturnier · 27. - 28.06.2026</p>
+            <p class="eyebrow">Deutsche Mannschaftsmeisterschaften · 27. - 28.06.2026</p>
             <h1>Senioren Team-Wettbewerb in Koblenz</h1>
             <p class="subtitle">
               Ein kompakter Überblick zum Deutschen Meisterschaft Mannschaftsturnier in Koblenz mit allen wichtigen Infos zu Damen- und Herren-Teams, Disziplinen, Anreise, Ausschreibung und Sponsoren.
@@ -877,6 +913,33 @@
       window.addEventListener('resize', () => { setTimeout(updateCarousel, 120); });
       // initial
       updateCarousel();
+    })();
+
+    // Dynamically switch travel panels between horizontal (inline) and stacked layout
+    (function initTravelResponsive(){
+      const grid = document.querySelector('.travel-grid');
+      if (!grid) return;
+      const panels = Array.from(grid.querySelectorAll('.panel'));
+      const gap = parseInt(getComputedStyle(grid).gap) || 14;
+      const minWidth = 320; // matches CSS min-width for panels
+
+      function updateTravel(){
+        const containerWidth = grid.clientWidth;
+        const required = panels.length * minWidth + (panels.length - 1) * gap;
+        if (containerWidth >= required) {
+          grid.classList.add('travel-inline');
+          grid.classList.remove('travel-stack');
+        } else {
+          grid.classList.add('travel-stack');
+          grid.classList.remove('travel-inline');
+        }
+      }
+
+      let t;
+      window.addEventListener('resize', ()=>{ clearTimeout(t); t = setTimeout(updateTravel, 100); });
+      window.addEventListener('load', updateTravel);
+      // initial run
+      updateTravel();
     })();
   </script>
 </body>
