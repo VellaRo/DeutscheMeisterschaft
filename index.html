@@ -877,6 +877,14 @@
       function updateCarousel(){
         const items = grid.querySelectorAll('.gallery-card');
         const cols = getColumns();
+        // On very small screens (phones) we prefer the stacked layout — never enable carousel
+        if (window.innerWidth <= 620) {
+          grid.classList.remove('carousel');
+          items.forEach(it => { it.style.flex = ''; it.style.height = ''; });
+          prev.classList.remove('show'); next.classList.remove('show');
+          return;
+        }
+
         if (items.length > cols) {
           // enable carousel
           grid.classList.add('carousel');
