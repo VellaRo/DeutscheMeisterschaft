@@ -420,24 +420,102 @@
     }
 
     .gallery-grid {
+      --gallery-row-height: 160px;
       display: grid;
       grid-template-columns: repeat(6, 1fr);
       gap: 10px;
+      grid-auto-rows: var(--gallery-row-height); /* keep row height consistent via variable */
+      align-items: stretch;
     }
+    /* Carousel mode (activated by JS) */
+    .gallery-grid.carousel {
+      display: flex;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+    }
+    .gallery-grid.carousel::-webkit-scrollbar { height: 8px; }
+    .gallery-grid.carousel::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.12); border-radius: 6px; }
+    .gallery-grid.carousel .gallery-card { height: var(--gallery-row-height); scroll-snap-align: start; flex: 0 0 auto; }
+
+    .gallery-prev, .gallery-next {
+      position: absolute;
+      top: 44%;
+      transform: translateY(-50%);
+      z-index: 4;
+      background: rgba(0,0,0,0.5);
+      color: var(--text);
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      cursor: pointer;
+    }
+    .gallery-prev { left: 8px; }
+    .gallery-next { right: 8px; }
+    .gallery-wrap { position: relative; }
+    .gallery-prev.show, .gallery-next.show { display: flex; }
 
     .gallery-card {
       border-radius: 18px;
       border: 1px solid rgba(255,255,255,0.11);
       box-shadow: var(--glow);
       transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 8px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      height: 100%;
+      box-sizing: border-box;
+    }
+    /* Keep consistent grid and let images scale to fit the fixed row height */
+    @media (max-width: 1180px) {
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); --gallery-row-height: 150px; }
+    }
+    @media (max-width: 860px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); --gallery-row-height: 140px; }
+    }
+    @media (max-width: 620px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); --gallery-row-height: 120px; }
     }
 
-    .gallery-card img {
-      width: 100%;
-      height: 140px;
-      object-fit: cover;
-      position: relative;
-      z-index: 1;
+    .gallery-link { display:flex; width:100%; height:100%; align-items:center; justify-content:center; }
+
+    /* Ensure thumbnails scale to the card height without cropping */
+    .gallery-link img { height:100%; width:auto; object-fit:contain; object-position:center; display:block; }
+
+    /* Lightbox modal for full-size preview */
+    .lightbox-modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.82);
+      z-index: 9999;
+      padding: 24px;
+    }
+    .lightbox-modal.open { display: flex; }
+    .lightbox-modal img { max-width: 92%; max-height: 92%; border-radius: 8px; box-shadow: 0 20px 40px rgba(0,0,0,0.6); }
+    .lightbox-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.06);
+      border: none;
+      color: var(--text);
+      font-size: 1.6rem;
+      padding: 6px 10px;
+      border-radius: 8px;
+      cursor: pointer;
     }
 
     .credit {
@@ -483,7 +561,9 @@
       .gallery-grid {
         grid-template-columns: 1fr 1fr;
       }
-      .gallery-card img { height: 120px; }
+      /* Travel panels on very small screens: stack but keep a sensible min-width so content doesn't get squashed. If viewport becomes narrower than the min-width, allow horizontal scrolling. */
+      .travel-grid { grid-template-columns: 1fr; overflow-x: auto; gap: 12px; }
+      .travel-grid .panel { min-width: 320px; box-sizing: border-box; }
       h1 { font-size: clamp(1.5rem, 8vw, 2.4rem); }
     }
   </style>
@@ -493,14 +573,9 @@
     <div class="container">
       <div class="hero-card">
         <div class="topline">
-          <div class="host-logos" style="display:flex; flex-direction:column; gap:8px;">
-            <a class="host-logo-link ctg" href="https://www.ctg-koblenz.de/sportangebote/kampfsport/fechten/" target="_blank" rel="noopener noreferrer" aria-label="Coblenzer Turngesellschaft 1880 e.V.">
-              <img src="cropped-Logo.png" alt="Logo Coblenzer Turngesellschaft 1880 e.V." />
-            </a>
-            <a class="host-logo-link" href="https://www.fechten.org/" target="_blank" rel="noopener noreferrer" aria-label="Deutscher Fechter-Bund">
-              <img src="logo-dfb.svg" alt="Logo Deutscher Fechter-Bund" />
-            </a>
-          </div>
+          <a class="host-logo-link ctg" href="https://www.ctg-koblenz.de/sportangebote/kampfsport/fechten/" target="_blank" rel="noopener noreferrer" aria-label="Coblenzer Turngesellschaft 1880 e.V.">
+            <img src="cropped-Logo.png" alt="Logo Coblenzer Turngesellschaft 1880 e.V." />
+          </a>
 
           <div class="title-wrap">
             <a href="#" target="_blank" rel="noopener noreferrer"><img src="Logo DMT 2026 Mai1.svg" alt="LOGO DMT 2026" /></a>
@@ -512,6 +587,10 @@
             </p>
 
           </div>
+
+          <a class="host-logo-link" href="https://www.fechten.org/" target="_blank" rel="noopener noreferrer" aria-label="Deutscher Fechter-Bund">
+            <img src="logo-dfb.svg" alt="Logo Deutscher Fechter-Bund" />
+          </a>
 
         </div>
 
@@ -620,16 +699,16 @@
 
                 <div class="schedule-grid">
                   <div class="schedule-item">
+                    <strong>Degen</strong>
+                    <span>28.06.2026<br />Beginn: 08:00 Uhr</span>
+                  </div>
+                  <div class="schedule-item">
                     <strong>Florett</strong>
                     <span>27.06.2026<br />Beginn: 09:00 Uhr</span>
                   </div>
                   <div class="schedule-item">
                     <strong>Säbel</strong>
                     <span>27.06.2026<br />Beginn: 12:30 Uhr</span>
-                  </div>
-                  <div class="schedule-item">
-                    <strong>Degen</strong>
-                    <span>28.06.2026<br />Beginn: 08:00 Uhr</span>
                   </div>
                 </div>
               </div>
@@ -691,17 +770,114 @@
         <div class="gallery-wrap">
           <h2 class="gallery-title">Impressionen</h2>
           <div class="gallery-grid">
-            <div class="gallery-card"><img src="FISU_2025_Tag3-0E3A2840.jpg" alt="Fechter im Wettkampf" loading="lazy" /></div>
-            <div class="gallery-card"><img src="FISU_2025_Tag3-0E3A3730.jpg" alt="Fechtduell" loading="lazy" /></div>
-            <div class="gallery-card"><img src="FISU_2025_Tag3-0E3A4044.jpg" alt="Athlet im Turnier" loading="lazy" /></div>
-            <div class="gallery-card"><img src="FISU_2025_Tag3-0E3A4148.jpg" alt="Jubel eines Fechters" loading="lazy" /></div>
-            <div class="gallery-card"><img src="FISU_2025_Tag3-JR6A1760.jpg" alt="Fechtszene auf der Planche" loading="lazy" /></div>
-            <div class="gallery-card"><img src="Marburg_2022-0007.jpg" alt="Finale Wettkampfszene" loading="lazy" /></div>
+            <div class="gallery-card"><a class="gallery-link" href="FISU_2025_Tag3-0E3A2840.jpg"><img src="FISU_2025_Tag3-0E3A2840.jpg" alt="Fechter im Wettkampf" loading="lazy"/></a></div>
+            <div class="gallery-card"><a class="gallery-link" href="FISU_2025_Tag3-0E3A3730.jpg"><img src="FISU_2025_Tag3-0E3A3730.jpg" alt="Fechtduell" loading="lazy"/></a></div>
+            <div class="gallery-card"><a class="gallery-link" href="FISU_2025_Tag3-0E3A4044.jpg"><img src="FISU_2025_Tag3-0E3A4044.jpg" alt="Athlet im Turnier" loading="lazy"/></a></div>
+            <div class="gallery-card"><a class="gallery-link" href="FISU_2025_Tag3-0E3A4148.jpg"><img src="FISU_2025_Tag3-0E3A4148.jpg" alt="Jubel eines Fechters" loading="lazy"/></a></div>
+            <div class="gallery-card"><a class="gallery-link" href="FISU_2025_Tag3-JR6A1760.jpg"><img src="FISU_2025_Tag3-JR6A1760.jpg" alt="Fechtszene auf der Planche" loading="lazy"/></a></div>
+            <div class="gallery-card"><a class="gallery-link" href="Marburg_2022-0007.jpg"><img src="Marburg_2022-0007.jpg" alt="Finale Wettkampfszene" loading="lazy"/></a></div>
           </div>
+          <button class="gallery-prev" aria-label="Vorheriges Bild">‹</button>
+          <button class="gallery-next" aria-label="Nächstes Bild">›</button>
           <div class="credit">Bilder: Jan von Uxkull</div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Lightbox modal -->
+  <div id="lightbox" class="lightbox-modal" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Schließen">×</button>
+    <img src="" alt="" />
+  </div>
+
+  <script>
+    // Open clicked gallery image in lightbox
+    document.querySelectorAll('.gallery-link').forEach(a => {
+      a.addEventListener('click', function(e){
+        e.preventDefault();
+        const src = this.getAttribute('href');
+        const modal = document.getElementById('lightbox');
+        modal.querySelector('img').src = src;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    // Close when clicking background or close button
+    const lightbox = document.getElementById('lightbox');
+    lightbox.addEventListener('click', function(e){
+      if (e.target.id === 'lightbox' || e.target.classList.contains('lightbox-close')) {
+        this.classList.remove('open');
+        this.setAttribute('aria-hidden','true');
+        this.querySelector('img').src = '';
+      }
+    });
+
+    // Close on ESC
+    document.addEventListener('keydown', function(e){
+      if (e.key === 'Escape') {
+        const modal = document.getElementById('lightbox');
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden','true');
+        modal.querySelector('img').src = '';
+      }
+    });
+    
+    // No orientation tagging — all gallery cards use the same grid cell height
+
+    // Carousel toggle: switch gallery to horizontal scroller if there are more items than visible columns
+    (function initGalleryCarousel(){
+      const grid = document.querySelector('.gallery-grid');
+      const prev = document.querySelector('.gallery-prev');
+      const next = document.querySelector('.gallery-next');
+      if (!grid || !prev || !next) return;
+
+      function getColumns(){
+        const w = window.innerWidth;
+        if (w <= 620) return 2;
+        if (w <= 860) return 3;
+        if (w <= 1180) return 4;
+        return 6;
+      }
+
+      function updateCarousel(){
+        const items = grid.querySelectorAll('.gallery-card');
+        const cols = getColumns();
+        if (items.length > cols) {
+          // enable carousel
+          grid.classList.add('carousel');
+          // compute item width so `cols` items fit the visible area
+          const gap = 10; // matches CSS gap
+          const containerWidth = grid.clientWidth;
+          const itemWidth = Math.floor((containerWidth - gap*(cols-1)) / cols);
+          items.forEach(it => {
+            it.style.flex = `0 0 ${itemWidth}px`;
+            // height is controlled via CSS variable (--gallery-row-height) so we don't force large heights from JS
+            it.style.height = '';
+          });
+          prev.classList.add('show'); next.classList.add('show');
+        } else {
+          // revert to grid
+          grid.classList.remove('carousel');
+          const items = grid.querySelectorAll('.gallery-card');
+          items.forEach(it => { it.style.flex = ''; it.style.height = ''; });
+          prev.classList.remove('show'); next.classList.remove('show');
+        }
+      }
+
+      function scrollByPage(direction=1){
+        const containerWidth = grid.clientWidth;
+        grid.scrollBy({ left: Math.round(containerWidth * 0.9) * direction, top:0, behavior: 'smooth' });
+      }
+
+      prev.addEventListener('click', ()=> scrollByPage(-1));
+      next.addEventListener('click', ()=> scrollByPage(1));
+      window.addEventListener('load', updateCarousel);
+      window.addEventListener('resize', () => { setTimeout(updateCarousel, 120); });
+      // initial
+      updateCarousel();
+    })();
+  </script>
 </body>
 </html>
