@@ -3,8 +3,10 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Deutsche Meisterschaft Mannschaftsturnier 2026 – Koblenz</title>
-  <meta name="description" content="Onepage Website für das Deutsche Meisterschaft Mannschaftsturnier 2026 in Koblenz." />
+  <link rel="icon" href="Logo DMT 2026 Mai1.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#07172d" />
+  <title>Deutsche Mannschaftsmeisterschaften 2026 – Koblenz</title>
+  <meta name="description" content="Onepage Website für die Deutschen Mannschaftsmeisterschaften 2026 in Koblenz mit allen wichtigen Infos und Sponsoren." />
   <style>
     :root {
       --bg-0: #040c18;
@@ -237,6 +239,25 @@
       position: relative;
       z-index: 1;
     }
+
+    /* Larger, center-cropped variants for key sponsors */
+    .sponsor-strip a.sponsor { overflow: hidden; }
+    .sponsor-strip a.sponsor.heuser img,
+    .sponsor-strip a.sponsor.sparkasse img,
+    .sponsor-strip a.sponsor.fechtklingen img { max-height: 96px; object-fit: cover; object-position: center; }
+
+    /* Prominent traffic notice styling */
+    .traffic-notice {
+      margin-top: 12px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: linear-gradient(180deg, rgba(255,230,180,0.03), rgba(255,200,120,0.02));
+      border: 1px solid rgba(255,200,100,0.12);
+      color: #fff7ea;
+      display: block;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+    }
+    .traffic-notice strong { color: var(--accent); }
 
     .center-grid {
       display: grid;
@@ -642,19 +663,27 @@
         </div>
 
         <div class="overview">
+          <!-- Prominent sponsor thank-you panel -->
+          <div class="sponsor-thanks panel" style="grid-column: 1 / -1; text-align:center;">
+            <h3 style="margin:0 0 6px;">Wir danken unseren Partnern und Sponsoren</h3>
+            <p style="margin:0; color:var(--muted); max-width:900px; margin-left:auto; margin-right:auto;">
+              Vielen Dank an unsere Sponsoren für ihre großartige Unterstützung. Ohne ihr Engagement wäre dieses Turnier nicht möglich. Wir schätzen die Zusammenarbeit sehr und bedanken uns herzlich bei allen Partnern.
+            </p>
+          </div>
+
           <div class="sponsor-strip top">
           <!-- <a href="https://www.bundeswehr.de/" target="_blank" rel="noopener noreferrer"><img src="bundesweht.png" alt="Logo Bundeswehr" /></a> -->
 
-          <a href="https://www.heuser-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Zeichenfläche 121--Logov5.svg" alt="Heuser Heizung Lüftung" /></a>
+          <a class="sponsor heuser" href="https://www.heuser-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Zeichenfläche 121--Logov5.svg" alt="Heuser Heizung Lüftung" /></a>
           <a href="https://www.stadtwerke-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/logo-stadtwerke-koblenz-2023-rgb.svg" alt="Stadtwerke Koblenz" /></a>
           <a href="https://www.evm.de/privatkunden/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/evm_logo_rgb_Schutzraum.jpeg" alt="EVM" /></a>
           <a href="https://www.wepa-apothekenbedarf.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/WEPA_Logo_Rot_CMYK_L.svg" alt="WEPA" /></a>
-          <a href="https://www.sparkasse-koblenz.de/de/home.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sparkasse Koblenz rot transparent EB0000 Website rot21--Logov5.svg" alt="Sparkasse Koblenz" /></a>
+          <a class="sponsor sparkasse" href="https://www.sparkasse-koblenz.de/de/home.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sparkasse Koblenz rot transparent EB0000 Website rot21--Logov5.svg" alt="Sparkasse Koblenz" /></a>
           <a href="https://www.lotto-rlp.de/home?gbn=6" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Lotto Partner_des_Sports_4c auf gelb.png" alt="Lotto Partner des Sports" /></a>
           <a href="https://fechtwelt.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Logo Fechtwelt Marker transparent.png" alt="Fechtwelt Marker" /></a>
           <a href="https://www.lsb-rlp.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Landessportbund_Rheinland-Pfalz_Logo.svg.png" alt="Landessportbund Rheinland-Pfalz" /></a>
           <a href="https://www.koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Koblenz-verbindet-Logo.webp" alt="Koblenz Verbindet" /></a>
-          <a href="https://fechtklingen.de/?srsltid=AfmBOoqB4DIWc3NGaSao5z3sqwPX9OG5Vv2ohKFRjF_To7LH5a7HXEjX" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/fechtklingen.svg" alt="Logo Fechtklingen.de" /></a>
+          <a class="sponsor fechtklingen" href="https://fechtklingen.de/?srsltid=AfmBOoqB4DIWc3NGaSao5z3sqwPX9OG5Vv2ohKFRjF_To7LH5a7HXEjX" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/fechtklingen.png" alt="Logo Fechtklingen.de" /></a>
           <a href="https://sebamed.com/en/info/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sebamed.png" alt="Logo Sebamed" /></a>
 
           </div>
@@ -663,6 +692,11 @@
               <p style="margin:0;">
                 Das Turnier wird gemeinsam vom Deutschen Fechter-Bund und dem Koblenzer Verein ausgerichtet. Ausgetragen werden ausschließlich Mannschaftswettbewerbe im Seniorenbereich für Damen und Herren in Florett, Degen und Säbel.
               </p>
+
+              <!-- Traffic notice for Friday -->
+              <div class="traffic-notice" role="status" aria-live="polite">
+                <strong>⚠️ Wichtiger Hinweis:</strong> Am <strong>Freitag</strong> findet in Koblenz der <strong>Koblenzer Firmenlauf</strong> statt. Bitte rechnen Sie mit eingeschränktem Verkehr, möglichen Staus und Wartezeiten und planen Sie zusätzliche Fahrzeit ein.
+              </div>
 
               <div class="facts">
                 <div class="fact">
@@ -778,13 +812,24 @@
               </div>
 
               <div class="panel travel">
-                <strong>Unterkünfte</strong>
+                <strong>Weitere Unterkünfte</strong>
                 <ul style="padding-left: 18px; margin: 10px 0 0;">
                   <li>CONTEL Hotel Koblenz<br /><small>Pastor-Klein-Straße 19, 56073 Koblenz</small></li>
                   <li style="margin-top:8px;">Hotel Sander<br /><small>Casinostraße 17, 56068 Koblenz</small></li>
                   <li style="margin-top:8px;">Four Points Flex by Sheraton Koblenz<br /><small>Neversstraße 15, 56068 Koblenz</small></li>
                 </ul>
               </div>
+            </div>
+
+            <!-- Official accommodation box -->
+            <div class="panel official-hotel" style="grid-column: 1 / -1;">
+              <strong>Offizielle Unterkunft — Wyndham Garden Lahnstein Koblenz</strong>
+              <p style="margin:8px 0 0; color:var(--muted);">Für den Zeitraum <strong>26. - 28.06.2026</strong> bieten wir folgende Sonderkonditionen an:</p>
+              <ul style="margin:8px 0 0; padding-left:18px; color:var(--muted);">
+                <li>Einzelzimmer: <strong>99,00 €</strong> pro Zimmer/Nacht, inklusive Frühstück</li>
+                <li>Doppelzimmer: <strong>109,00 €</strong> pro Zimmer/Nacht, inklusive Frühstück</li>
+              </ul>
+              <p style="margin:8px 0 0; color:var(--muted);">Es sind vorerst 30 Zimmer intern geblockt. Buchungen mit dem Stichwort <strong>„Fechten“</strong> bitte bis zum <strong>08.06.2026</strong> an <a href="mailto:reservation.kob21@gchhotelgroup.com">reservation.kob21@gchhotelgroup.com</a>. Kostenfreie Stornierung bis 7 Tage vor Anreise.</p>
             </div>
 
             <div class="panel">
