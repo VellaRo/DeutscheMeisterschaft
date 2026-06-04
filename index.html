@@ -5,8 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="icon" href="Logo DMT 2026 Mai1.svg" type="image/svg+xml" />
   <meta name="theme-color" content="#07172d" />
-  <title>Deutsche Mannschaftsmeisterschaften 2026 – Koblenz</title>
-  <meta name="description" content="Onepage Website für die Deutschen Mannschaftsmeisterschaften 2026 in Koblenz mit allen wichtigen Infos und Sponsoren." />
+  <link rel="canonical" href="https://www.koblenz2026.de/" />
+  <meta name="robots" content="index, follow" />
+  <!-- Open Graph / Social -->
+  <meta property="og:site_name" content="Deutsche Team Meisterschaft Fechten Koblenz 2026" />
+  <meta property="og:title" content="Deutsche Team Meisterschaft Fechten Koblenz 2026" />
+  <meta property="og:description" content="Informationen zur Deutschen Team Meisterschaft Fechten in Koblenz (27.-28.06.2026). Zeitplan, Anreise, Unterkünfte und Sponsoren." />
+  <meta property="og:url" content="https://www.koblenz2026.de/" />
+  <meta property="og:locale" content="de_DE" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="DTM Logo mit S aktuell18.png" />
+  <meta name="instagram:card" content="summary_large_image" />
+  <meta name="instagram:site" content="@fencing_koblenz" />
+  <meta name="instagram:title" content="Deutsche Team Meisterschaft Fechten Koblenz 2026" />
+  <meta name="instagram:description" content="Mehr zu in Koblenz." />
+  <meta name="instagram:image" content="DTM Logo mit S aktuell18.png" />
+  <title>Deutsche Team Meisterschaft Fechten Koblenz 2026</title>
+  <meta name="description" content="Deutsche Team Meisterschaft Fechten Koblenz 2026 — 27.–28. Juni. Infos zu Zeitplan, Anreise, Unterkünften, Sponsoren und Live-Ergebnissen." />
   <style>
     :root {
       --bg-0: #040c18;
@@ -459,6 +474,34 @@
       border-color: rgba(255,255,255,0.75);
     }
 
+    /* Social buttons (small icon buttons) */
+    .socials {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(236,243,255,0.96));
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      color: #082041;
+      text-decoration: none;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .social-btn:hover { transform: translateY(-3px); box-shadow: 0 14px 28px rgba(0,0,0,0.16); }
+    .social-btn svg { width: 20px; height: 20px; fill: currentColor; }
+    .footer-socials { display: flex; justify-content: center; gap: 12px; margin: 18px 0 28px; }
+    .footer-socials .social-btn { width: 48px; height: 48px; border-radius: 12px; }
+    .footer-socials .social-btn svg { width: 28px; height: 28px; }
+
     .travel ul {
       padding-left: 18px;
       margin: 10px 0 0;
@@ -574,6 +617,11 @@
       cursor: pointer;
     }
 
+    /* small helper to visually separate two final-blocks on narrow screens */
+    @media (max-width: 860px) {
+      .final-grid { display: grid; gap: 10px; }
+    }
+
     .credit {
       margin-top: 8px;
       color: var(--muted);
@@ -637,6 +685,47 @@
       h1 { font-size: clamp(1.5rem, 8vw, 2.4rem); }
     }
   </style>
+  
+  <!-- JSON-LD structured data: Event + Organizer -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Event",
+        "name": "Deutsche Team Meisterschaft Fechten Koblenz 2026",
+        "startDate": "2026-06-27",
+        "endDate": "2026-06-28",
+        "eventStatus": "https://schema.org/EventScheduled",
+        "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+        "location": {
+          "@type": "Place",
+          "name": "Wettkampfstätte Koblenz",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jupp-Gauchel-Straße 10",
+            "postalCode": "56075",
+            "addressLocality": "Koblenz",
+            "addressCountry": "DE"
+          }
+        },
+        "image": ["DTM Logo mit S aktuell18.png"],
+        "url": "https://www.koblenz2026.de/",
+        "organizer": {
+          "@type": "Organization",
+          "name": "CTG Koblenz",
+          "url": "https://www.ctg-koblenz.de/"
+        }
+      },
+      {
+        "@type": "Organization",
+        "name": "CTG Koblenz",
+        "url": "https://www.ctg-koblenz.de/",
+        "sameAs": ["https://www.koblenz2026.de/", "https://www.instagram.com/fencing_koblenz/"]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <header class="hero">
@@ -648,13 +737,14 @@
           </a>
 
           <div class="title-wrap">
-            <a href="#" target="_blank" rel="noopener noreferrer"><img src="Logo DMT 2026 Mai1.svg" alt="LOGO DMT 2026" /></a>
+            <a href="#" target="_blank" rel="noopener noreferrer"><img src="DTM Logo mit S aktuell18.png" alt="LOGO DMT 2026" /></a>
 
             <p class="eyebrow">Deutsche Mannschaftsmeisterschaften · 27. - 28.06.2026</p>
             <h1>Senioren Team-Wettbewerb in Koblenz</h1>
             <p class="subtitle">
               Ein kompakter Überblick zum Deutschen Meisterschaft Mannschaftsturnier in Koblenz mit allen wichtigen Infos zu Damen- und Herren-Teams, Disziplinen, Anreise, Ausschreibung und Sponsoren.
             </p>
+            
 
           </div>
 
@@ -676,21 +766,21 @@
           <div class="sponsor-strip top">
           <!-- <a href="https://www.bundeswehr.de/" target="_blank" rel="noopener noreferrer"><img src="bundesweht.png" alt="Logo Bundeswehr" /></a> -->
 
-          <a class="sponsor heuser" href="https://www.heuser-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Zeichenfläche 121--Logov5.svg" alt="Heuser Heizung Lüftung" /></a>
+          <a href="https://www.lotto-rlp.de/home?gbn=6" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Lotto Partner_des_Sports_4c auf gelb.png" alt="Lotto Partner des Sports" /></a>
+          <a href="https://www.koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Koblenz-verbindet-Logo.webp" alt="Koblenz Verbindet" /></a>
+          <a class="sponsor sparkasse" href="https://www.sparkasse-koblenz.de/de/home.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sparkasse Koblenz rot transparent EB0000 Website rot21--Logov5.svg" alt="Sparkasse Koblenz" /></a>
           <a href="https://www.stadtwerke-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/logo-stadtwerke-koblenz-2023-rgb.svg" alt="Stadtwerke Koblenz" /></a>
           <a href="https://www.evm.de/privatkunden/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/evm_logo_rgb_Schutzraum.jpeg" alt="EVM" /></a>
-          <a href="https://www.wepa-apothekenbedarf.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/WEPA_Logo_Rot_CMYK_L.svg" alt="WEPA" /></a>
-          <a class="sponsor sparkasse" href="https://www.sparkasse-koblenz.de/de/home.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sparkasse Koblenz rot transparent EB0000 Website rot21--Logov5.svg" alt="Sparkasse Koblenz" /></a>
-          <a href="https://www.lotto-rlp.de/home?gbn=6" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Lotto Partner_des_Sports_4c auf gelb.png" alt="Lotto Partner des Sports" /></a>
-          <a href="https://fechtwelt.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Logo Fechtwelt Marker transparent.png" alt="Fechtwelt Marker" /></a>
+          <a href="https://sebamed.com/en/info/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sebamed.png" alt="Logo Sebamed" /></a>
           <a href="https://www.lsb-rlp.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Landessportbund_Rheinland-Pfalz_Logo.svg.png" alt="Landessportbund Rheinland-Pfalz" /></a>
-          <a href="https://www.koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Koblenz-verbindet-Logo.webp" alt="Koblenz Verbindet" /></a>
+          <a href="https://fechtwelt.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Logo Fechtwelt Marker transparent.png" alt="Fechtwelt Marker" /></a>
+          <a class="sponsor heuser" href="https://www.heuser-koblenz.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Zeichenfläche 121--Logov5.svg" alt="Heuser Heizung Lüftung" /></a>
+          <a href="https://www.wepa-apothekenbedarf.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/WEPA_Logo_Rot_CMYK_L.svg" alt="WEPA" /></a>
+          <a class="sponsor vr-rheinahreifel" href="https://www.vr-rheinahreifel.de/startseite.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/VR-Bank-RAE-002.png" alt="Logo vr-rheinahreifel" /></a>
           <a class="sponsor ARAG" href="https://www.arag.de/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/ARAG_Logo_RGB.svg" alt="Logo ARAG" /></a>
           <a class="sponsor Provinzial" href="https://www.provinzial.de/suedwest/moelich-steffes" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Logo Provinzial.png" alt="Logo Provinzial" /></a>
-          <a class="sponsor vr-rheinahreifel" href="https://www.vr-rheinahreifel.de/startseite.html" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/VR-Bank-RAE-002.png" alt="Logo vr-rheinahreifel" /></a>
           <!-- <a class="sponsor fechtklingen" href="https://fechtklingen.de/?srsltid=AfmBOoqB4DIWc3NGaSao5z3sqwPX9OG5Vv2ohKFRjF_To7LH5a7HXEjX" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/fechtklingen.png" alt="Logo Fechtklingen.de" /></a> -->
         
-          <a href="https://sebamed.com/en/info/" target="_blank" rel="noopener noreferrer"><img src="officialSponsors/Sebamed.png" alt="Logo Sebamed" /></a>
 
           </div>
           <div class="center-grid">
@@ -725,6 +815,25 @@
             </div>
 
             <div class="team-grid">
+              <div class="panel">
+                <strong>27.06 — Finalgefechte</strong>
+                <ul style="margin:8px 0 0; padding-left:18px;">
+                  <li>15:45 — Men's Foil</li>
+                  <li>16:45 — Women's Epee</li>
+                  <li>17:45 — Men's Sabre</li>
+                </ul>
+              </div>
+              <div class="panel">
+                <strong>28.06 — Finalgefechte</strong>
+                <ul style="margin:8px 0 0; padding-left:18px;">
+                  <li>16:45 — Women's Foil</li>
+                  <li>17:45 — Men's Epee</li>
+                  <li>18:45 — Women's Sabre</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="team-grid">
               <div class="panel" style="flex: 2;">
                 <strong style="font-size:1.05rem;">Waffenkontrolle (alle Waffen)</strong>
                 <div class="schedule-grid" style="display: flex; flex-direction: column; gap: 10px;">
@@ -745,6 +854,7 @@
                   <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32809/html" target="_blank" rel="noopener noreferrer">Ausschreibung Florett</a>
                   <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32808/html" target="_blank" rel="noopener noreferrer">Ausschreibung Degen</a>
                   <a class="download-btn" href="https://fencing.ophardt.online/en/invitation/view/32785/html" target="_blank" rel="noopener noreferrer">Ausschreibung Säbel</a>
+                  <a class="download-btn" href="https://www.fencingworldwide.com/de/32785-2025/tournament/" target="_blank" rel="noopener noreferrer">Live-Ergebnisse</a>
                 </div>
               </div>
             </div>
@@ -840,11 +950,29 @@
 
             <div class="panel">
               <strong style="font-size:1.05rem;">Kontakt</strong>
-              <div class="facts">
+              <div class="facts" style="align-items:center;">
                 <div class="fact">
                   <strong>Ansprechpartner</strong>
                   <span>Jörg Schwanninger<br /><a href="mailto:sportwart@fechten-mittelrhein.de">sportwart@fechten-mittelrhein.de</a></span>
                 </div>
+                <div class="fact" style="display:flex; align-items:center; gap:12px;">
+                  <strong>Social</strong>
+                  <a class="social-btn" href="https://www.instagram.com/fencing_koblenz/" target="_blank" rel="noopener noreferrer" aria-label="Instagram fencing_koblenz" title="Instagram">
+                    <svg viewBox="0 0 3364.7 3364.7" width="28" height="28" style="width:28px;height:28px;display:block;" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" role="img">
+                      <defs>
+                        <radialGradient id="g0" cx="217.76" cy="3290.99" r="4271.92" gradientUnits="userSpaceOnUse">
+                          <stop offset=".09" stop-color="#fa8f21"/>
+                          <stop offset=".78" stop-color="#d82d7e"/>
+                        </radialGradient>
+                        <radialGradient id="g1" cx="2330.61" cy="3182.95" r="3759.33" gradientUnits="userSpaceOnUse">
+                          <stop offset=".64" stop-color="#8c3aaa" stop-opacity="0"/>
+                          <stop offset="1" stop-color="#8c3aaa"/>
+                        </radialGradient>
+                      </defs>
+                      <path d="M853.2,3352.8c-200.1-9.1-308.8-42.4-381.1-70.6-95.8-37.3-164.1-81.7-236-153.5S119.7,2988.6,82.6,2892.8c-28.2-72.3-61.5-181-70.6-381.1C2,2295.4,0,2230.5,0,1682.5s2.2-612.8,11.9-829.3C21,653.1,54.5,544.6,82.5,472.1,119.8,376.3,164.3,308,236,236c71.8-71.8,140.1-116.4,236-153.5C544.3,54.3,653,21,853.1,11.9,1069.5,2,1134.5,0,1682.3,0c548,0,612.8,2.2,829.3,11.9,200.1,9.1,308.6,42.6,381.1,70.6,95.8,37.1,164.1,81.7,236,153.5s116.2,140.2,153.5,236c28.2,72.3,61.5,181,70.6,381.1,9.9,216.5,11.9,281.3,11.9,829.3,0,547.8-2,612.8-11.9,829.3-9.1,200.1-42.6,308.8-70.6,381.1-37.3,95.8-81.7,164.1-153.5,235.9s-140.2,116.2-236,153.5c-72.3,28.2-181,61.5-381.1,70.6-216.3,9.9-281.3,11.9-829.3,11.9-547.8,0-612.8-1.9-829.1-11.9" fill="url(#g0)"/>
+                      <path d="M1269.25,1689.52c0-230.11,186.49-416.7,416.6-416.7s416.7,186.59,416.7,416.7-186.59,416.7-416.7,416.7-416.6-186.59-416.6-416.7m-225.26,0c0,354.5,287.36,641.86,641.86,641.86s641.86-287.36,641.86-641.86-287.36-641.86-641.86-641.86S1044,1335,1044,1689.52m1159.13-667.31a150,150,0,1,0,150.06-149.94h-0.06a150.07,150.07,0,0,0-150,149.94M1180.85,2707c-121.87-5.55-188.11-25.85-232.13-43-58.36-22.72-100-49.78-143.78-93.5s-70.88-85.32-93.5-143.68c-17.16-44-37.46-110.26-43-232.13-6.06-131.76-7.27-171.34-7.27-505.15s1.31-373.28,7.27-505.15c5.55-121.87,26-188,43-232.13,22.72-58.36,49.78-100,93.5-143.78s85.32-70.88,143.78-93.5c44-17.16,110.26-37.46,232.13-43,131.76-6.06,171.34-7.27,505-7.27S2059.13,666,2191,672c121.87,5.55,188,26,232.13,43,58.36,22.62,100,49.78,143.78,93.5s70.78,85.42,93.5,143.78c17.16,44,37.46,110.26,43,232.13,6.06,131.87,7.27,171.34,7.27,505.15s-1.21,373.28-7.27,505.15c-5.55,121.87-25.95,188.11-43,232.13-22.72,58.36-49.78,100-93.5,143.68s-85.42,70.78-143.78,93.5c-44,17.16-110.26,37.46-232.13,43-131.76,6.06-171.34,7.27-505.15,7.27s-373.28-1.21-505-7.27M1170.5,447.09c-133.07,6.06-224,27.16-303.41,58.06-82.19,31.91-151.86,74.72-221.43,144.18S533.39,788.47,501.48,870.76c-30.9,79.46-52,170.34-58.06,303.41-6.16,133.28-7.57,175.89-7.57,515.35s1.41,382.07,7.57,515.35c6.06,133.08,27.16,223.95,58.06,303.41,31.91,82.19,74.62,152,144.18,221.43s139.14,112.18,221.43,144.18c79.56,30.9,170.34,52,303.41,58.06,133.35,6.06,175.89,7.57,515.35,7.57s382.07-1.41,515.35-7.57c133.08-6.06,223.95-27.16,303.41-58.06,82.19-32,151.86-74.72,221.43-144.18s112.18-139.24,144.18-221.43c30.9-79.46,52.1-170.34,58.06-303.41,6.06-133.38,7.47-175.89,7.47-515.35s-1.41-382.07-7.47-515.35c-6.06-133.08-27.16-224-58.06-303.41-32-82.19-74.72-151.86-144.18-221.43S2586.8,537.06,2504.71,505.15c-79.56-30.9-170.44-52.1-303.41-58.06C2068,441,2025.41,439.52,1686,439.52s-382.1,1.41-515.45,7.57" fill="#ffffff"/>
+                    </svg>
+                  </a>
               </div>
             </div>
           </div>
@@ -1020,5 +1148,21 @@
       updateTravel();
     })();
   </script>
+  <script>
+    // Lazy-load sponsors and gallery thumbnails (host logos remain eager)
+    (function(){
+      try {
+        document.querySelectorAll('.sponsor-strip img').forEach(img => {
+          if (!img.hasAttribute('loading')) img.loading = 'lazy';
+        });
+        document.querySelectorAll('.gallery-grid img').forEach(img => {
+          if (!img.hasAttribute('loading')) img.loading = 'lazy';
+        });
+        // keep host logos eager for performance/branding
+        document.querySelectorAll('.host-logo-link img').forEach(img => img.loading = 'eager');
+      } catch (e) { /* silent */ }
+    })();
+  </script>
+  
 </body>
 </html>
